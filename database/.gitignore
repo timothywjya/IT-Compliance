@@ -1,0 +1,11 @@
+*.sqlite*
+.env
+.env.example
+.env.local
+.env.*.local
+/storage/*.key
+/storage/*.crt
+/storage/*.pem
+/storage/*.p12
+/storage/*.pfx
+/storage/*.jks
