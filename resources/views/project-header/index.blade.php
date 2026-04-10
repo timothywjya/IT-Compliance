@@ -38,7 +38,11 @@
 @push('scripts')
 <script>
     $('#table-project').DataTable({
-        ajax: '{{ route("project-header.index") }}?dt=1'
+        ajax: {
+            url: '{{ route("project-header.datatable") }}'
+            , type: 'GET'
+            , dataSrc: 'data'
+        }
         , columns: [{
                 data: null
                 , render: (d, t, r, m) => m.row + 1

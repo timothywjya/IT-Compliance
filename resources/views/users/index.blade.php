@@ -44,7 +44,11 @@
 @push('scripts')
 <script>
     $('#table-users').DataTable({
-        ajax: '{{ route("users.index") }}?dt=1'
+        ajax: {
+            url: '{{ route("users.datatable") }}'
+            , type: 'GET'
+            , dataSrc: 'data'
+        }
         , columns: [{
                 data: null
                 , render: (d, t, r, m) => m.row + 1
@@ -68,8 +72,7 @@
             , {
                 data: 'deleted_at'
                 , render: d => d ?
-                    `<span class="badge bg-danger">Nonaktif</span>` :
-                    `<span class="badge bg-success">Aktif</span>`
+                    `<span class="badge bg-danger">Nonaktif</span>` : `<span class="badge bg-success">Aktif</span>`
             }
             , {
                 data: 'id'

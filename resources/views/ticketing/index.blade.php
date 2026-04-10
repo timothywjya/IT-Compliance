@@ -37,7 +37,11 @@
 @push('scripts')
 <script>
     $('#table-ticketing').DataTable({
-        ajax: '{{ route("ticketing.index") }}?dt=1'
+        ajax: {
+            url: '{{ route("ticketing.datatable") }}'
+            , type: 'GET'
+            , dataSrc: 'data'
+        }
         , columns: [{
                 data: null
                 , render: (d, t, r, m) => m.row + 1
@@ -49,8 +53,7 @@
             , {
                 data: 'ticket_type'
                 , render: d => d === 'PRPK' ?
-                    `<span class="badge badge-prpk">PRPK</span>` :
-                    `<span class="badge badge-memo">MEMO</span>`
+                    `<span class="badge badge-prpk">PRPK</span>` : `<span class="badge badge-memo">MEMO</span>`
             }
             , {
                 data: 'subject'

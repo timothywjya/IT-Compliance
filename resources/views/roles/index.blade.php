@@ -41,7 +41,11 @@
 @push('scripts')
 <script>
     $('#table-roles').DataTable({
-        ajax: '{{ route("roles.index") }}?dt=1'
+        ajax: {
+            url: '{{ route("roles.datatable") }}'
+            , type: 'GET'
+            , dataSrc: 'data'
+        }
         , columns: [{
                 data: null
                 , render: (d, t, r, m) => m.row + 1
